@@ -14,5 +14,5 @@ export class Project {
   tasks: Task[];
 
   @OneToMany(() => UserProject, (userProject) => userProject.project, { cascade: true })
-  userProject: UserProject;
+  userProjects: UserProject[];
 }

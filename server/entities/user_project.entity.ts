@@ -19,6 +19,6 @@ export class UserProject {
   @ManyToOne(() => User, (user) => user.userProject)
   user: User;
 
-  @ManyToOne(() => Project, (project) => project.userProject)
+  @ManyToOne(() => Project, (project) => project.userProjects)
   project: Project;
 }

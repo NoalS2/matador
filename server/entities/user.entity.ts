@@ -26,6 +26,6 @@ export class User {
   @OneToMany(() => UserRole, (userRole) => userRole.user, { cascade: true })
   userRoles: UserRole[];
 
-  @OneToMany(() => UserProject, (userProject) => userProject.userId, { cascade: true })
+  @OneToMany(() => UserProject, (userProject) => userProject.user, { cascade: true })
   userProject: UserProject[];
 }
