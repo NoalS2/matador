@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user.entity';
 import { Project } from './project.entity';
 
-@Entity()
+@Entity('userProject')
 export class UserProject {
   @PrimaryGeneratedColumn()
   id: number;
@@ -14,7 +14,7 @@ export class UserProject {
   projectId: number;
 
   @Column()
-  contextId: string;
+  leader: boolean;
 
   @ManyToOne(() => User, (user) => user.userProject)
   user: User;

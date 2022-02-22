@@ -14,7 +14,18 @@ export class TasksService {
     return this.taskRepository.findOne(id);
   }
 
+  async findAllForProject(projectId: number): Promise<Task[]> {
+    const tasks = await this.taskRepository.find({
+      where: { projectId },
+    });
+    return tasks;
+  }
+
   createTask(task: Task) {
+    return this.taskRepository.save(task);
+  }
+
+  editTask(task: Task) {
     return this.taskRepository.save(task);
   }
 

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post, Res } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
 import { JwtBody } from 'server/decorators/jwt_body.decorator';
@@ -35,6 +35,12 @@ export class UsersController {
   @Get('/users/me')
   async getCurrentUser(@JwtBody() jwtBody: JwtBodyDto) {
     const user = await this.usersService.find(jwtBody.userId);
+    return { user };
+  }
+
+  @Get('/user/:email')
+  public async userIndex(@Param('email') email: string) {
+    const user = await this.usersService.findByEmail(email);
     return { user };
   }
 

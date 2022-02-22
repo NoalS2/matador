@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Project } from './project.entity';
+import { User } from './user.entity';
 
 @Entity()
 export class Task {
@@ -13,11 +14,20 @@ export class Task {
   description: string;
 
   @Column()
-  timeEstimate: number;
+  timeEstimate: string;
 
   @Column()
   status: boolean;
 
+  @Column()
+  title: string;
+
+  @Column()
+  userId: number;
+
   @ManyToOne(() => Project, (project) => project.tasks)
   project: Project;
+
+  @ManyToOne(() => User, (user) => user.tasks)
+  user: User;
 }
